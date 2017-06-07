@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycuteblog.log4j2;
+package com.log4j2;
 
 import java.io.File;
 import org.apache.logging.log4j.LogManager;
@@ -34,15 +34,14 @@ public class LogDemo {
         context.setConfigLocation(file.toURI());
         
         int i=0;
-        while(i <2000){
-            i++;
+        do{
             
             logger.debug("Hello world- debug log");
             logger.info("Hello world - info log");
             logger.warn("Hello world - warn log");
             logger.error("Hello world - error log");
             
-        }
+        }while(i==2);
         
         
         
