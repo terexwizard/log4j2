@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="info">
+<Properties>
+    <Property name="log-path">D:\workspace_git\logs</Property>
+</Properties>
+<Appenders>
+    <Console name="console-log" target="SYSTEM_OUT">
+        <PatternLayout pattern="[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n"/>
+    </Console>	
+	
+    
+    <RollingFile name="debug-log" fileName="${log-path}/log-debug.log"
+		filePattern="${log-path}/$${date:yyyy-MM}/log-debug-%d{yyyy-MM-dd}-%i.log.gz">
+        <PatternLayout>
+			<pattern>[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n</pattern>
+        </PatternLayout>
+        <Policies>
+			<TimeBasedTriggeringPolicy/>
+			<SizeBasedTriggeringPolicy size="10 KB" />
+        </Policies>
+    </RollingFile>
+    <RollingFile name="error-log" fileName="${log-path}/log-error.log"
+        filePattern="${log-path}/$${date:yyyy-MM}/log-error--%d{yyyy-MM-dd}-%i.log.gz">
+        <PatternLayout>
+			<pattern>[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n</pattern>
+        </PatternLayout>
+        <Policies>
+			<TimeBasedTriggeringPolicy/>
+			<SizeBasedTriggeringPolicy size="10 KB" />
+        </Policies>
+    </RollingFile>
+    <RollingFile name="info-log" fileName="${log-path}/log-info.log"
+        filePattern="${log-path}/$${date:yyyy-MM}/log-info-%d{yyyy-MM-dd}-%i.log.gz">
+        <PatternLayout>
+			<pattern>[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n</pattern>
+        </PatternLayout>
+        <Policies>
+			<TimeBasedTriggeringPolicy/>
+			<SizeBasedTriggeringPolicy size="10 KB" />
+        </Policies>
+    </RollingFile>
+</Appenders>
+
+
+
+
+
+<Loggers>
+    <!--
+    <Logger name="com.mycuteblog" level="debug" additivity="false">
+        <appender-ref ref="debug-log" level="debug"/>
+        <appender-ref ref="error-log" level="error"/>
+        <appender-ref ref="console-log" level="debug"/>
+        <appender-ref ref="info-log" level="info"/>
+    </Logger>
+	-->
+    <Root level="debug" additivity="false">
+        <AppenderRef ref="console-log"/>
+		<appender-ref ref="debug-log"/>
+    </Root>
+</Loggers>
+</Configuration>
+
