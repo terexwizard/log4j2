@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Configuration status="info">
+<Configuration status="info" monitorInterval="60">
 <Properties>
     <Property name="log-path">D:\workspace_git\logs</Property>
 </Properties>
@@ -12,12 +12,13 @@
     <RollingFile name="debug-log" fileName="${log-path}/log-debug.log"
 		filePattern="${log-path}/$${date:yyyy-MM}/log-debug-%d{yyyy-MM-dd}-%i.log.gz">
         <PatternLayout>
-			<pattern>[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n</pattern>
+			<pattern>%d %p %c{1.} [%t] %m%n</pattern>
         </PatternLayout>
         <Policies>
-			<TimeBasedTriggeringPolicy/>
+			<TimeBasedTriggeringPolicy interval="1" modulate="true"/>
 			<SizeBasedTriggeringPolicy size="10 KB" />
         </Policies>
+		<DefaultRolloverStrategy max="2000"/>
     </RollingFile>
     <RollingFile name="error-log" fileName="${log-path}/log-error.log"
         filePattern="${log-path}/$${date:yyyy-MM}/log-error--%d{yyyy-MM-dd}-%i.log.gz">
@@ -25,9 +26,10 @@
 			<pattern>[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n</pattern>
         </PatternLayout>
         <Policies>
-			<TimeBasedTriggeringPolicy/>
+			<TimeBasedTriggeringPolicy interval="1" modulate="true"/>
 			<SizeBasedTriggeringPolicy size="10 KB" />
         </Policies>
+		<DefaultRolloverStrategy max="2000"/>
     </RollingFile>
     <RollingFile name="info-log" fileName="${log-path}/log-info.log"
         filePattern="${log-path}/$${date:yyyy-MM}/log-info-%d{yyyy-MM-dd}-%i.log.gz">
@@ -35,9 +37,10 @@
 			<pattern>[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n</pattern>
         </PatternLayout>
         <Policies>
-			<TimeBasedTriggeringPolicy/>
+			<TimeBasedTriggeringPolicy interval="1" modulate="true"/>
 			<SizeBasedTriggeringPolicy size="10 KB" />
         </Policies>
+		<DefaultRolloverStrategy max="2000"/>
     </RollingFile>
 </Appenders>
 
